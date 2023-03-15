@@ -22,7 +22,7 @@ public class UserDaoTest {
 
     @Test
     void createTest() throws SQLException {
-        String USER_ID = "";
+        String USER_ID = "kiki";
         UserDao userDao = new UserDao();
         userDao.create(new User(USER_ID,"password","name", "email"));
 

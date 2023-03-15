@@ -3,6 +3,9 @@ package org.example;
 import com.zaxxer.hikari.HikariDataSource;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionManager {
     public static DataSource getDataSource() {
@@ -20,5 +23,19 @@ public class ConnectionManager {
         hikariDataSource.setUsername(USER_PASSWORD);
 
         return hikariDataSource;
+    }
+
+
+    public static Connection getConnection() {
+        String URL = "jdbc:h2:mem://localhost/~/jdbc-practice;MODE=MySQL;DB_CLOSE_DELAY=-1";
+        //String URL = "jdbc:h2:mem://localhost/~/jdbc-practice;MODE=MySQL;DB_CLOSE_DELAY=-1";
+        String ID = "sa";
+        String PW = "";
+
+        try {
+            return DriverManager.getConnection(URL, ID, PW);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

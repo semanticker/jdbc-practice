@@ -9,7 +9,7 @@ public class UserDao {
         PreparedStatement pstmt = null;
 
         try {
-            con = getConnection();
+            con = ConnectionManager.getConnection();
             String sql = "INSERT INTO USERS values (?, ?, ?, ?)";
 
             pstmt = con.prepareStatement(sql);
@@ -32,19 +32,6 @@ public class UserDao {
 
     }
 
-    private Connection getConnection() {
-        String URL = "jdbc:h2:mem://localhost/~/jdbc-practice;MODE=MySQL;DB_CLOSE_DELAY=-1";
-        //String URL = "jdbc:h2:mem://localhost/~/jdbc-practice;MODE=MySQL;DB_CLOSE_DELAY=-1";
-        String ID = "sa";
-        String PW = "";
-
-        try {
-            return DriverManager.getConnection(URL, ID, PW);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public User findByUserId(String userId) throws SQLException {
 
 
@@ -55,7 +42,7 @@ public class UserDao {
         ResultSet rs = null;
 
         try {
-            con = getConnection();
+            con = ConnectionManager.getConnection();
 
             String sql = "SELECT userId, password, name, email FROM USERS WHERE userid = ?";
             con.prepareStatement(sql);

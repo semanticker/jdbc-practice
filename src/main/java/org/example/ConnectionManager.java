@@ -8,7 +8,7 @@ public class ConnectionManager {
     public static DataSource getDataSource() {
 
         String DRIVER_CLASS_NAME = "org.h2.Driver";
-        String JDBC_URL = "jdbc:h2:mem://localhost/~/jdbc-practice;MODE=MySQL;DB_CLOSE_DELAY=1";
+        String JDBC_URL = "jdbc:h2:mem://localhost/~/jdbc-practice;MODE=MySQL;DB_CLOSE_DELAY=-1";
 
         String USER_NAME = "sa";
         String USER_PASSWORD = "";

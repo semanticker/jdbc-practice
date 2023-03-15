@@ -8,3 +8,5 @@ CREATE TABLE USERS (
 
     PRIMARY KEY (userId)
 );
+
+INSERT INTO USERS values ('1','2','3','4');

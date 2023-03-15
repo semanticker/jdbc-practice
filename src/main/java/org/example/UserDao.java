@@ -33,15 +33,13 @@ public class UserDao {
     }
 
     private Connection getConnection() {
-        String URL = "jdbc:h2:mem://localhost/~/jdbc-practice;MODE=MySQL;DB_CLOSE_DELAY=1";
+        String URL = "jdbc:h2:mem://localhost/~/jdbc-practice;MODE=MySQL;DB_CLOSE_DELAY=-1";
+        //String URL = "jdbc:h2:mem://localhost/~/jdbc-practice;MODE=MySQL;DB_CLOSE_DELAY=-1";
         String ID = "sa";
         String PW = "";
 
         try {
-            Class.forName("org.h2.Driver");
             return DriverManager.getConnection(URL, ID, PW);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

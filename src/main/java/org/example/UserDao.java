@@ -88,4 +88,27 @@ public class UserDao {
         }
 
     }
+
+    public User findByUserId2(String userId) throws SQLException{
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+
+        String sql = "SELECT userId, password, name, email FROM USERS WHERE userid = ?";
+        return (User)jdbcTemplate.executeQuery(userId, sql, new PreparedStatementSetter() {
+            @Override
+            public void setter(PreparedStatement pstmt) throws SQLException {
+                pstmt.setString(1, userId);
+            }
+        }, new RowMapper() {
+
+            @Override
+            public Object map(ResultSet resultSet) throws SQLException {
+                return new User(
+                        resultSet.getString("userId"),
+                        resultSet.getString("password"),
+                        resultSet.getString("name"),
+                        resultSet.getString("email")
+                );
+            }
+        });
+    }
 }

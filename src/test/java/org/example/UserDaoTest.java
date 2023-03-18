@@ -26,7 +26,7 @@ public class UserDaoTest {
         UserDao userDao = new UserDao();
         userDao.create(new User(USER_ID,"password","name", "email"));
 
-        User user = userDao.findByUserId(USER_ID);
+        User user = userDao.findByUserId2(USER_ID);
         assertThat(user).isEqualTo(new User(USER_ID,"password","name", "email"));
     }
 }

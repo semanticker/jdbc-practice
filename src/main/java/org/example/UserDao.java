@@ -93,7 +93,7 @@ public class UserDao {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
         String sql = "SELECT userId, password, name, email FROM USERS WHERE userid = ?";
-        return (User)jdbcTemplate.executeQuery(userId, sql, new PreparedStatementSetter() {
+        return (User)jdbcTemplate.executeQuery(sql, new PreparedStatementSetter() {
             @Override
             public void setter(PreparedStatement pstmt) throws SQLException {
                 pstmt.setString(1, userId);
